@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1714">
+<title>Təmiz Nəfəs</title>
+<style>
+:root{--bg:#07110f;--panel:#10231e;--panel2:#16352b;--green:#43e184;--mint:#baf8d2;--text:#f3fff8;--muted:#a5c1b2;--line:#24483a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#14382b 0,#07110f 42%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+main{max-width:760px;margin:auto;padding:18px 15px 90px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 20px}.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#1e9e61,#073d2b);display:grid;place-items:center;font-size:30px;box-shadow:0 8px 25px #0005}.brand h1{font-size:24px;margin:0}.brand p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.hero{background:linear-gradient(135deg,#174a36,#0c211b);border:1px solid #286447;border-radius:25px;padding:22px;margin-bottom:16px;box-shadow:0 12px 35px #0003}.eyebrow{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mint)}.hero h2{font-size:27px;line-height:1.15;margin:8px 0}.hero p{color:#d0e9db;margin:0 0 18px}.progress{height:8px;background:#071b13;border-radius:10px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--green);width:0%;transition:width .2s}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}.stat,.card{background:#0d201b;border:1px solid var(--line);border-radius:18px;padding:16px}.stat .label{font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:25px;margin:4px 0}.stat small{color:var(--muted)}
+h3{font-size:18px;margin:22px 2px 10px}.card{margin-bottom:12px}.fieldgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)}input{width:100%;background:#071712;border:1px solid #2b5944;color:var(--text);padding:12px;border-radius:12px;font-size:16px;outline:none}button{border:0;border-radius:13px;padding:13px 16px;font-size:15px;font-weight:700;cursor:pointer}.primary{background:var(--green);color:#062014;width:100%;margin-top:12px}.secondary{background:#173b2c;color:var(--mint);border:1px solid #2b6448}.danger{background:#42241f;color:#ffd9cc;border:1px solid #754034}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #203c31;color:#dff6e8;font-size:14px}.check:last-child{border:0}.check input{width:19px;height:19px;accent-color:var(--green);margin:0}.quote{font-size:17px;line-height:1.5;color:var(--mint);font-weight:600}.note{color:var(--muted);font-size:12px;line-height:1.5}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#e6fff0;color:#07311e;padding:11px 17px;border-radius:20px;font-size:13px;font-weight:700;display:none;box-shadow:0 5px 20px #0006}.nav{position:fixed;bottom:0;left:0;right:0;background:#081510ee;border-top:1px solid var(--line);padding:11px;display:flex;justify-content:center;gap:25px;color:var(--muted);font-size:12px;backdrop-filter:blur(10px)}.nav span:first-child{color:var(--green)}@media(min-width:600px){main{padding-top:28px}.hero{padding:28px}.hero h2{font-size:34px}.stats{grid-template-columns:repeat(4,1fr)}.stat strong{font-size:23px}}
+</style>
+</head>
+<body>
+<main>
+  <header class="brand"><div class="logo">🌿</div><div><h1>Təmiz Nəfəs</h1><p>Siqaretsiz həyat sənin əlindədir</p></div></header>
+  <section class="hero">
+    <div class="eyebrow">Hər gün yeni başlanğıcdır</div>
+    <h2 id="heroTitle">Daha sağlam gələcəyə ilk addımını at.</h2>
+    <p id="heroText">Bu gün siqaretsiz qalmaq üçün kiçik bir addım seç.</p>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:#c4ead4"><span id="progressText">Gündəlik tapşırıqlar: 0/4</span><span id="percent">0%</span></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="label">Siqaretsiz gün</div><strong id="days">0</strong><small>gün</small></div>
+    <div class="stat"><div class="label">Təxmini qənaət</div><strong id="saved">0.00 ₼</strong><small>pul kisəndə qalan</small></div>
+    <div class="stat"><div class="label">Çəkilməyən siqaret</div><strong id="avoided">0</strong><small>ədəd</small></div>
+    <div class="stat"><div class="label">İstəyi dəf etdin</div><strong id="wins">0</strong><small>dəfə</small></div>
+  </section>
+  <h3>⚙️ Sənin məlumatların</h3>
+  <section class="card">
+    <div class="fieldgrid">
+      <label class="field">Gündə neçə siqaret?<input id="daily" type="number" min="0" value="10"></label>
+      <label class="field">Qutunun qiyməti (₼)<input id="price" type="number" min="0" step="0.1" value="3"></label>
+      <label class="field">Qutuda neçə ədəd?<input id="pack" type="number" min="1" value="20"></label>
+      <label class="field">Tərgitməyə başladığın tarix<input id="start" type="date"></label>
+    </div>
+    <button class="primary" id="saveSettings">Məlumatları yadda saxla</button>
+    <p class="note">Hesablamalar təxminidir. Məlumatlar bu cihazın brauzerində saxlanılır.</p>
+  </section>
+  <h3>✅ Bu günün tapşırıqları</h3>
+  <section class="card" id="tasks">
+    <label class="check"><input type="checkbox" data-task="0"> <span>Bu gün siqaret çəkməməyə qərar verdim</span></label>
+    <label class="check"><input type="checkbox" data-task="1"> <span>İstək gələndə 10 dəqiqə gözlədim</span></label>
+    <label class="check"><input type="checkbox" data-task="2"> <span>Su içdim və ya qısa gəzintiyə çıxdım</span></label>
+    <label class="check"><input type="checkbox" data-task="3"> <span>Özümü motivasiya etdim</span></label>
+    <div class="actions" style="margin-top:14px"><button class="secondary" id="urge">💪 İstəyi dəf etdim</button><button class="secondary" id="complete">🌱 Günü tamamla</button></div>
+    <p class="note" id="taskNote">Kiçik addımlar da irəliləyişdir. Bir dəfə siqaret çəkmək bütün zəhmətini silmir.</p>
+  </section>
+  <h3>💚 Motivasiya</h3>
+  <section class="card">
+    <div class="quote" id="quote">“Bu gün siqaret çəkməmək, gələcəyinə verdiyin dəyərdir.”</div>
+    <button class="secondary" id="newQuote" style="margin-top:14px">Başqa motivasiya</button>
+  </section>
+  <h3>Siqaret istəyi gələndə</h3>
+  <section class="card">
+    <p style="margin-top:0">1. 10 dəqiqə gözlə və yavaş-yavaş nəfəs al.</p>
+    <p>2. Bir stəkan su iç və ya qısa gəzintiyə çıx.</p>
+    <p>3. Siqaret çəkilən mühitdən bir az uzaqlaş.</p>
+    <p class="note">Güclü nikotin asılılığında həkim və ya əczaçıdan dəstək almaq faydalıdır. Nikotin əvəzedici vasitələr barədə mütəxəssislə məsləhətləş.</p>
+  </section>
+  <p class="note">Təmiz Nəfəs — ilkin prototip. Bu versiyada hesab yaratma, bulud sinxronlaşdırması, mağaza yayımlaması və reklam gəliri hələ qoşulmayıb.</p>
+</main>
+<div class="nav"><span>⌂ Ana səhifə</span><span>▥ Statistika</span><span>♡ Motivasiya</span><span>⚙ Profil</span></div>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toISOString().slice(0,10);
+const defaultState={daily:10,price:3,pack:20,start:today(),wins:0,completedDays:[],tasks:{},lastTaskDate:today()};
+let state;
+try{state={...defaultState,...JSON.parse(localStorage.getItem('temiz-nefes-v1')||'{}')}}catch(e){state={...defaultState}}
+function save(){localStorage.setItem('temiz-nefes-v1',JSON.stringify(state))}
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2200)}
+function dateDiff(a,b){return Math.max(0,Math.floor((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000))}
+function getDays(){return state.completedDays.length}
+function render(){
+  const daily=Math.max(0,+state.daily||0), price=Math.max(0,+state.price||0), pack=Math.max(1,+state.pack||20), days=getDays();
+  $('days').textContent=days;
+  $('saved').textContent=(days*daily/pack*price).toFixed(2)+' ₼';
+  $('avoided').textContent=days*daily;
+  $('wins').textContent=state.wins||0;
+  const checks=state.tasks[today()]||[false,false,false,false], n=checks.filter(Boolean).length;
+  document.querySelectorAll('[data-task]').forEach(el=>el.checked=!!checks[+el.dataset.task]);
+  $('progressBar').style.width=(n/4*100)+'%';$('progressText').textContent=`Gündəlik tapşırıqlar: ${n}/4`;$('percent').textContent=Math.round(n/4*100)+'%';
+  $('heroTitle').textContent=days?`Artıq ${days} siqaretsiz gün qazanmısan!`:'Daha sağlam gələcəyə ilk addımını at.';
+  $('heroText').textContent=n===4?'Əla! Bu günün bütün tapşırıqlarını tamamladın.':'Bu gün siqaretsiz qalmaq üçün kiçik bir addım seç.';
+}
+$('daily').value=state.daily;$('price').value=state.price;$('pack').value=state.pack;$('start').value=state.start||today();
+document.querySelectorAll('[data-task]').forEach(el=>el.addEventListener('change',()=>{
+  const arr=state.tasks[today()]||[false,false,false,false];arr[+el.dataset.task]=el.checked;state.tasks[today()]=arr;save();render();
+}));
+$('saveSettings').onclick=()=>{state.daily=$('daily').value;state.price=$('price').value;state.pack=$('pack').value;state.start=$('start').value||today();save();render();toast('Məlumatlar yadda saxlanıldı')};
+$('urge').onclick=()=>{state.wins=(state.wins||0)+1;save();render();toast('Əla! İstəyi dəf etməyin özü uğurdur 💚')};
+$('complete').onclick=()=>{const arr=state.tasks[today()]||[false,false,false,false];if(arr.every(Boolean)){if(!state.completedDays.includes(today()))state.completedDays.push(today());save();render();toast('Günün qeyd edildi. Sabah da davam et!')}else{toast('Əvvəlcə gündəlik tapşırıqları tamamla')}}; 
+const quotes=['“Bu gün siqaret çəkməmək, gələcəyinə verdiyin dəyərdir.”','“İstək keçicidir, qazandığın sağlamlıq daha dəyərlidir.”','“Mükəmməl olmaq lazım deyil — davam etmək vacibdir.”','“Hər siqaretsiz gün özün üçün qazandığın bir gündür.”'];
+$('newQuote').onclick=()=>{$('quote').textContent=quotes[Math.floor(Math.random()*quotes.length)]};
+render();
+</script>
+</body>
+</html>
